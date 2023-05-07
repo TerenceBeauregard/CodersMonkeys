@@ -9,6 +9,7 @@ import { Logo } from "@/ui/design-system/logo/logo";
 import { Avatar } from "@/ui/design-system/avatar/avatar";
 import { Container } from "@/ui/components/container/container";
 import { Navigation } from "@/ui/components/navigation/navigation";
+import { Footer } from "@/ui/components/navigation/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,8 +17,8 @@ export default function Home() {
 	return (
 		<>
 			<Seo title="Accueil" description=""/>
-
 			<Navigation />
+			<Footer />
 		</>
 	);
 }
