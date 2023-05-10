@@ -1,16 +1,17 @@
 import { Typography } from "@/ui/design-system/typography/typography";
 import { Container } from "../container/container";
-import Image from "next/image"; 
+import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import { ActiveLink } from "./active-link";
 import { AppLinks, FooterLinks } from "@/types/app-links";
 import { LinkType, LinkTypes } from "@/lib/link-type";
 import { footerLinks } from "./app-links";
+import { SocialNetworksButtons } from "./social-networks-button";
 
 export const Footer = () => {
 	const currentYear = new Date().getFullYear();
 
-    const footerNavigationList = footerLinks.map((coloneLinks) => (
+	const footerNavigationList = footerLinks.map((coloneLinks) => (
 		<FooterLink key={uuidv4()} data={coloneLinks} />
 	));
 
@@ -53,28 +54,31 @@ export const Footer = () => {
 						</a>
 						{` - Remote monkey SASU`}
 					</Typography>
-					<div className=""></div>
+					<div className="">
+						<SocialNetworksButtons theme="gray"/>
+					</div>
 				</div>
 			</Container>
 		</div>
 	);
 };
 
-interface footerLinkProps{
+interface footerLinkProps {
 	data: FooterLinks;
 }
 
-const FooterLink = ({data}: footerLinkProps) => {
+const FooterLink = ({ data }: footerLinkProps) => {
 	const linksList = data.links.map((link) => (
 		<div key={uuidv4()}>
-            {link.type === LinkTypes.INTERNAL && (
-                <ActiveLink href={link.baseUrl}>{link.label}</ActiveLink>
-            )}
-            {link.type === LinkTypes.EXTERNAL && (
-                 <a href={link.baseUrl} target="_blank">{link.label}</a>
-            )}
-        </div>
-        
+			{link.type === LinkTypes.INTERNAL && (
+				<ActiveLink href={link.baseUrl}>{link.label}</ActiveLink>
+			)}
+			{link.type === LinkTypes.EXTERNAL && (
+				<a href={link.baseUrl} target="_blank">
+					{link.label}
+				</a>
+			)}
+		</div>
 	));
 	return (
 		<div className="min-w-[190px]">
@@ -86,13 +90,9 @@ const FooterLink = ({data}: footerLinkProps) => {
 			>
 				{data.label}
 			</Typography>
-			<Typography
-				theme="gray"
-				variant="caption3"
-				className="space-y-4"
-			>
-                {linksList}
-            </Typography>
+			<Typography theme="gray" variant="caption3" className="space-y-4">
+				{linksList}
+			</Typography>
 		</div>
 	);
 };
