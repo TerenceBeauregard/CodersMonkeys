@@ -22,7 +22,7 @@ export const SocialNetworksButtons = ({
 		<Button
 			key={uuidv4()}
 			variant="ico"
-			iconTheme="gray"
+			iconTheme={theme}
 			icon={{
 				icon: socialNetwork.icon ? socialNetwork.icon : RiFacebookFill,
 			}}
