@@ -6,7 +6,13 @@ import Link from "next/link";
 
 interface Props {
 	size?: "small" | "medium" | "large";
-	variant?: "accent" | "secondary" | "outline" | "disabled" | "ico";
+	variant?:
+		| "accent"
+		| "secondary"
+		| "outline"
+		| "disabled"
+		| "ico"
+		| "success";
 	icon?: IconProps;
 	iconTheme?: "accent" | "secondary" | "gray";
 	iconPosition?: "left" | "right";
@@ -50,6 +56,9 @@ export const Button = ({
 		case "disabled":
 			variantStyle =
 				"bg-gray-400 border border-gray-500 text-gray-600 rounded cursor-not-allowed";
+			break;
+		case "success":
+			variantStyle = "bg-secondary hover:bg-secondary-400 text-white rounded";
 			break;
 		case "ico":
 			if (iconTheme === "accent") {
@@ -96,10 +105,10 @@ export const Button = ({
 	}
 
 	const handleClick = () => {
-		if(action){
-			action()
+		if (action) {
+			action();
 		}
-	}
+	};
 	const buttonContent = (
 		<>
 			{isLoading && (
@@ -146,16 +155,18 @@ export const Button = ({
 				{buttonContent}
 			</button>
 		</>
-	)
+	);
 
 	if (baseUrl) {
-		if(linkType === LinkTypes.EXTERNAL){
-			return(
-				<a href={baseUrl} target="_blank">{buttonElement}</a>
-			)
-		} else{
-			return <Link href={baseUrl}>{buttonElement}</Link>
+		if (linkType === LinkTypes.EXTERNAL) {
+			return (
+				<a href={baseUrl} target="_blank">
+					{buttonElement}
+				</a>
+			);
+		} else {
+			return <Link href={baseUrl}>{buttonElement}</Link>;
 		}
 	}
-	return buttonElement
+	return buttonElement;
 };
