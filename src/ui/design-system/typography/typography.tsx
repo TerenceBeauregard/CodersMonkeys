@@ -17,7 +17,15 @@ interface Props {
 		| "caption3"
 		| "caption4";
 	component?: "h1" | "h2" | "h3" | "h4" | "h5" | "div" | "p" | "span";
-	theme?: "black" | "gray" | "white" | "primary" | "secondary";
+	theme?:
+		| "black"
+		| "gray"
+		| "white"
+		| "primary"
+		| "secondary"
+		| "danger"
+		| "success"
+		| "warning";
 	weight?: "regular" | "medium";
 	className?: string;
 	children: React.ReactNode;
@@ -84,26 +92,35 @@ export const Typography = ({
 			colorStyle = "text-gray";
 			break;
 		case "gray":
-      colorStyle = "text-gray-700";
+			colorStyle = "text-gray-700";
 			break;
 		case "white":
-      colorStyle = "text-white";
+			colorStyle = "text-white";
 			break;
 		case "primary":
-      colorStyle = "text-primary";
+			colorStyle = "text-primary";
 			break;
 		case "secondary":
-      colorStyle = "text-secondary";
+			colorStyle = "text-secondary";
 			break;
+		case "danger":
+			colorStyle = "text-alert-danger";
+			break;
+		case "warning":
+			colorStyle = "text-alert-warning";
+			break;
+		case "success":
+			colorStyle = "text-alert-succes";
+			break; 
 	}
 
 	return (
 		<Component
 			className={clsx(
 				variantStyle,
-        		colorStyle,
+				colorStyle,
 				weight === "medium" && "font-medium",
-				className,
+				className
 			)}
 		>
 			{children}
