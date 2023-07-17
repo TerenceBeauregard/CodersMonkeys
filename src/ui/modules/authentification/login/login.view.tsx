@@ -10,7 +10,7 @@ interface Props {
 	form: FormType;
 }
 
-export const LoginView = ({form}: Props) => {
+export const LoginView = ({ form }: Props) => {
 	return (
 		<Container className="grid grid-cols-2 gap-20 mb-32">
 			<div className="flex items-center">
@@ -48,7 +48,15 @@ export const LoginView = ({form}: Props) => {
 							</Typography>
 						</div>
 					</div>
-					<LoginForm form={form}/>
+					<LoginForm form={form} />
+					<Typography variant="caption4" theme="primary">
+						<Link
+							href="/connexion/mots-de-passe-perdu"
+							className="flex justify-center"
+						>
+							Mot de passe perdu
+						</Link>
+					</Typography>
 				</Box>
 			</div>
 		</Container>

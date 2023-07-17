@@ -8,10 +8,10 @@ import internal from "stream";
 import { FormType } from "@/types/forms";
 
 interface Props {
-	form: FormType
+	form: FormType;
 }
 
-export const RegisterView = ({form}: Props) => {
+export const RegisterView = ({ form }: Props) => {
 	return (
 		<Container className="grid grid-cols-2 gap-20 mb-32">
 			<div className="flex items-center">
@@ -47,7 +47,19 @@ export const RegisterView = ({form}: Props) => {
 							</Typography>
 						</div>
 					</div>
-                    <RegisterForm form={form}/>
+					<RegisterForm form={form} />
+					<Typography variant="caption4" theme="gray" className="max-w-md mx-auto space-y-1 text-center ">
+						<div>En t'inscrivant, tu acceptes les</div>
+						<div>
+							<Link href="/#" className="text-gray">
+								Condition d'utilisation {" "}
+							</Link>
+							et la{" "}
+							<Link href="/#" className="text-gray">
+								Politique de confidentialité
+							</Link>
+						</div>
+					</Typography>
 				</Box>
 			</div>
 		</Container>
